@@ -16,8 +16,7 @@ jobs:
       run: sh .github/checksum.sh /tmp/checksums.txt
     - name: Setup environment variables
       run: |
-        echo "export ACTION_NODE_VERSION=\$(node --version | grep -oE 'v[0-9]+')" >> "$BASH_ENV"
-        source $BASH_ENV
+        ACTION_NODE_VERSION=$(node --version | grep -oE 'v[0-9]+')
     - name: Log out node.js version
       run: |
         node --version
