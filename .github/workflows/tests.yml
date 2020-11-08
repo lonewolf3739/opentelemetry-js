@@ -17,7 +17,9 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
     - name: Create Checksum
-      run: sh .github/checksum.sh /tmp/checksums.txt
+      run: |
+        sh .github/checksum.sh /tmp/checksums.txt
+        cat /tmp/checksums.txt
     - name: Log out node.js version
       run: |
         node --version
