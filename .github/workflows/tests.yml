@@ -41,7 +41,7 @@ jobs:
           packages/opentelemetry-shim-opentracing/node_modules
           packages/opentelemetry-tracing/node_modules
           packages/opentelemetry-web/node_modules
-        key: npm-cache-01-${{ matrix.node }}-${{ hashFiles("/tmp/checksums.txt") }}-20B74F85
+        key: npm-cache-01-${{ matrix.node }}-${{ hashFiles('**/package-lock.json') }}-20B74F85
     - name: Cache node modules
       uses: actions/cache@v2
       with:
@@ -54,7 +54,7 @@ jobs:
           packages/opentelemetry-resource-detector-aws/node_modules
           packages/opentelemetry-resource-detector-gcp/node_modules
           packages/opentelemetry-resources/node_modules
-        key: npm-cache-02-${{ matrix.node }}-${{ hashFiles("/tmp/checksums.txt") }}-20B74F85
+        key: npm-cache-02-${{ matrix.node }}-${{ hashFiles('**/package-lock.json') }}-20B74F85
     - name: Install Root Dependencies
       run: npm install --ignore-scripts
     - name: Boostrap dependencies
