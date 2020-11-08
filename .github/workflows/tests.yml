@@ -20,6 +20,8 @@ jobs:
       run: |
         sh .github/checksum.sh /tmp/checksums.txt
         cat /tmp/checksums.txt
+        ls -la
+        echo $GITHUB_WORKSPACE
     - name: Log out node.js version
       run: |
         node --version
