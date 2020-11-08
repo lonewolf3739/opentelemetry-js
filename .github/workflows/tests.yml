@@ -21,49 +21,49 @@ jobs:
         sh .github/checksum.sh checksums.txt
         cat checksums.txt
         ls -la
-    # - name: Log out node.js version
-    #   run: |
-    #     node --version
-    # - name: Cache node modules
-    #   uses: actions/cache@v2
-    #   with:
-    #     path: |
-    #       ./node_modules
-    #       ./package-lock.json
-    #       packages/opentelemetry-api/node_modules
-    #       packages/opentelemetry-context-async-hooks/node_modules
-    #       packages/opentelemetry-context-base/node_modules
-    #       packages/opentelemetry-context-zone/node_modules
-    #       packages/opentelemetry-context-zone-peer-dep/node_modules
-    #       packages/opentelemetry-core/node_modules
-    #       packages/opentelemetry-exporter-jaeger/node_modules
-    #       packages/opentelemetry-exporter-prometheus/node_modules
-    #       packages/opentelemetry-exporter-zipkin/node_modules
-    #       packages/opentelemetry-metrics/node_modules
-    #       packages/opentelemetry-node/node_modules
-    #       packages/opentelemetry-shim-opentracing/node_modules
-    #       packages/opentelemetry-tracing/node_modules
-    #       packages/opentelemetry-web/node_modules
-    #     key: npm-cache-01-${{ matrix.node }}-${{ hashFiles('checksums.txt') }}-20B74F85
-    # - name: Cache node modules
-    #   uses: actions/cache@v2
-    #   with:
-    #     path: |
-    #       packages/opentelemetry-plugin-grpc/node_modules
-    #       packages/opentelemetry-plugin-http/node_modules
-    #       packages/opentelemetry-plugin-https/node_modules
-    #       packages/opentelemetry-exporter-collector/node_modules
-    #       packages/opentelemetry-plugin-xml-http-request/node_modules
-    #       packages/opentelemetry-resource-detector-aws/node_modules
-    #       packages/opentelemetry-resource-detector-gcp/node_modules
-    #       packages/opentelemetry-resources/node_modules
-    #     key: npm-cache-02-${{ matrix.node }}-${{ hashFiles('checksums.txt') }}-20B74F85
-    # - name: Install Root Dependencies
-    #   run: npm install --ignore-scripts
-    # - name: Boostrap dependencies
-    #   run: npx lerna bootstrap --no-ci
-    # - name: Unit tests
-    #   run: npm run test
-    # - name: Report coverage
-    #   if: ${{ matrix.node }} == '12'
-    #   run: npm run codecov
+    - name: Log out node.js version
+      run: |
+        node --version
+    - name: Cache node modules
+      uses: actions/cache@v2
+      with:
+        path: |
+          ./node_modules
+          ./package-lock.json
+          packages/opentelemetry-api/node_modules
+          packages/opentelemetry-context-async-hooks/node_modules
+          packages/opentelemetry-context-base/node_modules
+          packages/opentelemetry-context-zone/node_modules
+          packages/opentelemetry-context-zone-peer-dep/node_modules
+          packages/opentelemetry-core/node_modules
+          packages/opentelemetry-exporter-jaeger/node_modules
+          packages/opentelemetry-exporter-prometheus/node_modules
+          packages/opentelemetry-exporter-zipkin/node_modules
+          packages/opentelemetry-metrics/node_modules
+          packages/opentelemetry-node/node_modules
+          packages/opentelemetry-shim-opentracing/node_modules
+          packages/opentelemetry-tracing/node_modules
+          packages/opentelemetry-web/node_modules
+        key: npm-cache-01-${{ matrix.node }}-${{ hashFiles('checksums.txt') }}-20B74F85
+    - name: Cache node modules
+      uses: actions/cache@v2
+      with:
+        path: |
+          packages/opentelemetry-plugin-grpc/node_modules
+          packages/opentelemetry-plugin-http/node_modules
+          packages/opentelemetry-plugin-https/node_modules
+          packages/opentelemetry-exporter-collector/node_modules
+          packages/opentelemetry-plugin-xml-http-request/node_modules
+          packages/opentelemetry-resource-detector-aws/node_modules
+          packages/opentelemetry-resource-detector-gcp/node_modules
+          packages/opentelemetry-resources/node_modules
+        key: npm-cache-02-${{ matrix.node }}-${{ hashFiles('checksums.txt') }}-20B74F85
+    - name: Install Root Dependencies
+      run: npm install --ignore-scripts
+    - name: Boostrap dependencies
+      run: npx lerna bootstrap --no-ci
+    - name: Unit tests
+      run: npm run test
+    - name: Report coverage
+      if: ${{ matrix.node }} == '12'
+      run: npm run codecov
