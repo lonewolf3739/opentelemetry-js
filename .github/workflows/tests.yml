@@ -17,13 +17,9 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
     - name: Create Checksum
-      run: |
-        sh .github/checksum.sh checksums.txt
-        cat checksums.txt
-        ls -la
+      run: sh .github/checksum.sh checksums.txt
     - name: Log out node.js version
-      run: |
-        node --version
+      run: node --version
     - name: Cache node modules
       uses: actions/cache@v2
       with:
